@@ -18,14 +18,12 @@ const checkoutRoutes = require("./routes/checkoutRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const videoRoutes = require("./routes/videoRoutes");
 const purchasedCoursesRoutes = require("./routes/purchasedCoursesRoutes");
-const courseDetailsRoutes = require("./routes/courseDetailsRoutes");
 const storePurchaseRoutes = require("./routes/storePurchaseRoutes");
 const courseContentRoutes = require("./routes/courseContentRoutes");
 
-app.use("/auth", authRoutes);
+app.use("/auth", authRoutes); 
 app.use("/checkout", checkoutRoutes);
 app.use("/courses", courseRoutes);
-app.use("/course-details", courseDetailsRoutes);
 app.use("/videos", videoRoutes);
 app.use("/purchased", purchasedCoursesRoutes);
 app.use("/store-purchase", storePurchaseRoutes);
@@ -38,7 +36,7 @@ initializeConnection()
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
-  })
+  }) 
   .catch((err) => {
     console.error("Error initializing database connection:", err);
   });

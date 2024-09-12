@@ -6,4 +6,4 @@ const router = express.Router();
 
 router.post('/store-purchase', authenticateToken, storePurchase);
 
-module.exports = router;
+module.exports = router;  

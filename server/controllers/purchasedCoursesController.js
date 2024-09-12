@@ -9,7 +9,7 @@ exports.getPurchasedCourses = async (req, res) => {
       "SELECT id, email FROM users WHERE username = ?",
       [username]
     );
-
+ 
     if (userResults.length === 0) {
       return res.status(400).send("User does not exist");
     }

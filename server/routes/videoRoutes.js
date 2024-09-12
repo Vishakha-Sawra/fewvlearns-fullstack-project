@@ -4,4 +4,4 @@ const videoController = require("../controllers/videoController");
 
 router.get("/videos/:id", videoController.getVideo);
 
-module.exports = router;
+module.exports = router; 
