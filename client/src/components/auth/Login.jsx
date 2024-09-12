@@ -23,7 +23,7 @@ const Login = () => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('refreshToken', data.refreshToken);
         login();
-        navigate('/courses');
+        navigate('/blogs');
       } else {
         alert(data.message || 'Error logging in');
       }

@@ -14,11 +14,9 @@ const Blog = () => {
       try {
         const markdownModule = await import(`../../blogs/${blogId}.md`);
         
-        // Accessing the html property
         const htmlContent = markdownModule.html || '';
         setContent(htmlContent);
         
-        // Accessing the attributes
         setAttributes(markdownModule.attributes || {});
       } catch (err) {
         console.error('Error fetching the blog:', err);
@@ -36,11 +34,11 @@ const Blog = () => {
             <h1 className="text-white text-center text-3xl font-bold mb-4">{attributes.title}</h1>
             <p className="text-gray-300">{attributes.description}</p>
             <div className="markdown-body text-white max-w-full">
-              <ReactMarkdown
+              <ReactMarkdown 
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
               >
-                {content}
+                {content} 
               </ReactMarkdown>
             </div>
           </div>

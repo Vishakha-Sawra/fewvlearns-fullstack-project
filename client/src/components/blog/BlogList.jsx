@@ -1,4 +1,3 @@
-// src/BlogList.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +5,6 @@ const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    // Fetch the list of blog files from the server or a predefined list
     const blogFiles = [
       { id: 'generate-jwt', title: 'FEWV Seconds of Learning How to Generate a JWT?', description: 'Learn how to generate a JSON Web Token (JWT) in just a few seconds.', tags: ['React', 'JavaScript'] },
       { id: 'learn-docker', title: 'FEWV Seconds of Learning How to Containerize?', description: 'Learn how to containerize your applications using Docker.', tags: ['Docker', 'Node.js'] },
@@ -24,7 +22,7 @@ const BlogList = () => {
           Read our latest blogs and learn new skills in just a few seconds.
         </p>
         <ul className="space-y-8 mt-12">
-          {blogs.map((blog) => (
+          {blogs.map((blog) => ( 
             <li key={blog.id} className="bg-[#001313] p-8 rounded-lg shadow-sm shadow-green-300 md:px-8 md:py-8 hover:shadow-green-300">
               <div className="flex justify-between items-center ">
                 <Link to={`/blog/${blog.id}`} className="text-gray-100 hover:text-green-400 text-lg">

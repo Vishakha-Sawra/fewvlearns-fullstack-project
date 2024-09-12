@@ -1,4 +1,3 @@
-// src/MainPage.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import backgroundImage from "./assets/home-image.png";
@@ -42,7 +41,9 @@ const MainPage = () => {
   return (
     <>
       <section className="flex flex-col justify-center items-center">
-          <div className="flex flex-col justify-center items-center bg-style py-48 px-10">
+          
+          {/* Welcome Page */}
+          <div className="flex flex-col justify-center items-center bg-style py-48 px-10"> 
             <div className="text-center">
               <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-gray-300/50 hover:ring-gray-300/70">
@@ -68,19 +69,19 @@ const MainPage = () => {
               </p>
 
               <div className="mt-8 flex flex-wrap justify-center gap-4">
-                <a
+                <Link
                   className="block w-full rounded-full border text-white hover:text-black border-green-300  px-12 py-3 text-sm font-medium hover:bg-green-300 focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
                   href="/blogs"
                 >
                   Read Blogs
-                </a>
+                </Link>
 
-                <a
+                <Link
                   className="block w-full rounded-full border border-green-300 px-12 py-3 text-sm font-medium text-white hover:text-black hover:bg-green-300 focus:outline-none focus:ring sm:w-auto"
                   href="/courses"
                 >
                   Buy Courses
-                </a>
+                </Link>
               </div>
             </div>
             <div className="flex justify-center items-center rounded-xl shadow-md shadow-green-300 max-w-5xl mx-auto mt-24">
@@ -93,6 +94,8 @@ const MainPage = () => {
               </Link>
             </div>
           </div>
+
+          {/* What is FewvLearns */}
 
           <div className="my-24 max-w-5xl mx-auto px-10">
             <div className="mx-auto py-12">
@@ -141,7 +144,8 @@ const MainPage = () => {
             </div>
           </div>
 
-          <div className="my-5 max-w-5xl  mx-auto px-10">
+          {/* Testimonials */}
+          <div className="my-5 max-w-5xl mx-auto px-10">
             <div className="text-center">
               <div className="text-sm font-bold tracking-wider text-green-300 py-4 uppercase">
                 Testimonials
@@ -188,7 +192,6 @@ const MainPage = () => {
               </div>
             </div>
           </div>
-          
       </section>
     </>
   );

@@ -5,6 +5,7 @@ import course2 from "../../assets/courses-images/2.png";
 import course3 from "../../assets/courses-images/3.png";
 import course4 from "../../assets/courses-images/4.png";
 import course5 from "../../assets/courses-images/5.png";
+
 const courses = [
   {
     id: 1,
@@ -12,10 +13,7 @@ const courses = [
     price: 30,
     imageUrl: course1,
   },
-  { id: 2, 
-    name: "React, but with webpack", 
-    price: 20, 
-    imageUrl: course2 },
+  { id: 2, name: "React, but with webpack", price: 20, imageUrl: course2 },
   {
     id: 3,
     name: "Learn About Terraform in Depth",
@@ -53,49 +51,58 @@ const Courses = () => {
   const handlePayment = async () => {
     let token = localStorage.getItem("token");
     const refreshToken = localStorage.getItem("refreshToken");
-  
+
     if (!token) {
       console.error("No token found");
       return;
     }
-  
+
     try {
-      const response = await fetch("http://localhost:3000/checkout/create-checkout-session", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({ items: selectedItems }),
-      });
-  
+      const response = await fetch(
+        "http://localhost:3000/checkout/create-checkout-session",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ items: selectedItems }),
+        }
+      );
+
       if (response.ok) {
         const { url } = await response.json();
         window.location = url;
       } else if (response.status === 401) {
         // Token might be expired, try refreshing it
-        const refreshResponse = await fetch("http://localhost:3000/auth/refresh", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ refreshToken })
-        });
-  
-        if (refreshResponse.ok) {
-          const { token: newToken } = await refreshResponse.json();
-          localStorage.setItem("token", newToken);
-  
-          // Retry payment with new token
-          const retryResponse = await fetch("http://localhost:3000/checkout/create-checkout-session", {
+        const refreshResponse = await fetch(
+          "http://localhost:3000/auth/refresh",
+          {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${newToken}`
             },
-            body: JSON.stringify({ items: selectedItems }),
-          });
-  
+            body: JSON.stringify({ refreshToken }),
+          }
+        );
+
+        if (refreshResponse.ok) {
+          const { token: newToken } = await refreshResponse.json();
+          localStorage.setItem("token", newToken);
+
+          // Retry payment with new token
+          const retryResponse = await fetch(
+            "http://localhost:3000/checkout/create-checkout-session",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${newToken}`,
+              },
+              body: JSON.stringify({ items: selectedItems }),
+            }
+          );
+
           if (retryResponse.ok) {
             const { url } = await retryResponse.json();
             window.location = url;
@@ -109,7 +116,11 @@ const Courses = () => {
         console.error("Payment failed");
         const errorData = await response.json();
         if (errorData.purchasedCourseIds) {
-          alert(`You have already purchased courses with IDs: ${errorData.purchasedCourseIds.join(", ")}`);
+          alert(
+            `You have already purchased courses with IDs: ${errorData.purchasedCourseIds.join(
+              ", "
+            )}`
+          );
         } else {
           alert(`Error: ${errorData.message}`);
         }
@@ -118,9 +129,7 @@ const Courses = () => {
       console.error("Error during payment:", error);
     }
   };
-  
-  
-  
+
   const handleChange = (event) => {
     const { value, checked } = event.target;
     const id = parseInt(value);
@@ -131,12 +140,9 @@ const Courses = () => {
     );
   };
 
-
   return (
     <div className="text-center pt-36">
-      <h1 className="text-3xl font-bold text-gray-100 pb-4">
-        Our Courses
-      </h1>
+      <h1 className="text-3xl font-bold text-gray-100 pb-4">Our Courses</h1>
       <p className="text-gray-300 text-center">
         All that you need to kickstart your career.
       </p>

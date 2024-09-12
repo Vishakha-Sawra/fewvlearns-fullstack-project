@@ -9,7 +9,7 @@ const PrivateRoute = ({ element }) => {
 
   useEffect(() => {
     if (!token && !alertShown.current) {
-      alert('Please log in to access the Courses page.');
+      alert('Please Register to access the Blogs.');
       alertShown.current = true; // Mark alert as shown
       setRedirect(true);
     }

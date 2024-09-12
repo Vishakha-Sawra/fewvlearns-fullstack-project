@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 export default function Footer() {
   return (
     <footer className="mx-auto py-14 flex justify-center items-center">

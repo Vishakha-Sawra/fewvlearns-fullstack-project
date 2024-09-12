@@ -1,4 +1,3 @@
-// src/Register.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +20,7 @@ const Register = ({ onLogin }) => {
       if (response.ok) {
         alert('Registration successful!');
         onLogin();
-        navigate('/courses');
+        navigate('/login');
       } else {
         alert('Error registering user');
       }
