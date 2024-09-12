@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { AuthContext } from '../auth/AuthContext';
 import NavIcon from '../../assets/logo.png';
-import '../../App.css';
 
 const Navigation = () => {
   const { isAuthenticated, hasPurchasedCourses, logout } = useContext(AuthContext);
@@ -24,10 +23,10 @@ const Navigation = () => {
 
   return (
     <nav className="bg-[#3434342f] bg-opacity-50 backdrop-blur-xl fixed w-full z-10">
-      <div className="container mx-auto flex justify-between items-center px-4 py-1">
+      <div className="container mx-auto flex justify-between items-center p-4">
         <div className="flex items-center">
           <Link to="/">
-            <img src={NavIcon} alt="Logo" className="h-14 w-12" />
+            <img src={NavIcon} alt="Logo" className="h-16 w-12" />
           </Link>
         </div>
         <div className="hidden md:flex items-center">
