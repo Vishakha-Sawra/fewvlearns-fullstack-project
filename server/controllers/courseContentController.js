@@ -20,7 +20,6 @@ exports.getCourseContent = async (req, res) => {
           console.warn(`User ${username} has not purchased course with id ${courseId}`);
           res.status(404).send("Course not found or not purchased");
         } else {
-          console.log(`Course content fetched successfully for courseId: ${courseId}`);
           res.json(results[0]);
         }
       } catch (err) {

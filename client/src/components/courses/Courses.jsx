@@ -53,7 +53,6 @@ const Courses = () => {
     const refreshToken = localStorage.getItem("refreshToken");
 
     if (!token) {
-      console.error("No token found");
       return;
     }
 
@@ -107,13 +106,10 @@ const Courses = () => {
             const { url } = await retryResponse.json();
             window.location = url;
           } else {
-            console.error("Retrying payment failed");
           }
         } else {
-          console.error("Refresh token failed");
         }
       } else {
-        console.error("Payment failed");
         const errorData = await response.json();
         if (errorData.purchasedCourseIds) {
           alert(
@@ -126,7 +122,6 @@ const Courses = () => {
         }
       }
     } catch (error) {
-      console.error("Error during payment:", error);
     }
   };
 

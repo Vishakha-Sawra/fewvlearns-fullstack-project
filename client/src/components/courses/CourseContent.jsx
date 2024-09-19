@@ -13,7 +13,6 @@ const CourseContent = ({ match }) => {
         });
         setCourse(response.data);
       } catch (error) {
-        console.error('Error fetching course content:', error);
       }
     };
 

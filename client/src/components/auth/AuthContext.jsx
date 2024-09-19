@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
           'Authorization': `Bearer ${token}`
         }
       });
-      console.log('Purchased courses:', response.data); // Log the API response
       setHasPurchasedCourses(response.data.length > 0);
     } catch (error) {
       console.error('Error checking purchased courses:', error);

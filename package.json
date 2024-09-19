@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js",
+"dev": "nodemon server/server.js",
+"build": "npm install && npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
@@ -18,8 +19,10 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.10.3",
-    "nodemon": "^3.1.4",
     "stripe": "^16.2.0",
     "vimeo": "^2.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }

@@ -30,7 +30,6 @@ const MyCourses = () => {
       localStorage.setItem("token", newToken);
       return newToken;
     } catch (error) {
-      console.error("Error refreshing token:", error);
       throw error;
     }
   }
@@ -47,8 +46,6 @@ const MyCourses = () => {
           },
         }
       );
-      console.log("API Response:", response.data); // Log the API response
-      const uniqueCourses = removeDuplicates(response.data);
       setCourses(uniqueCourses);
     } catch (error) {
       if (error.response && error.response.status === 403) {
@@ -63,7 +60,6 @@ const MyCourses = () => {
               },
             }
           );
-          console.log("API Response after refresh:", response.data); // Log the API response after refresh
           const uniqueCourses = removeDuplicates(response.data);
           setCourses(uniqueCourses);
         } catch (refreshError) {
@@ -100,7 +96,6 @@ const MyCourses = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Courses:", courses);
   }, [courses]);
 
   if (error) {

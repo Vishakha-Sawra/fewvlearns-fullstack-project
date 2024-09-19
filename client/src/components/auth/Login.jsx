@@ -53,10 +53,8 @@ const Login = () => {
         return data.token;
       } else {
         // Handle refresh token expiration or invalidation
-        console.error('Refresh token is invalid or expired');
       }
     } catch (error) {
-      console.error('Error refreshing token', error);
     }
   };
   

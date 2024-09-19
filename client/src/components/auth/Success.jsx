@@ -21,9 +21,7 @@ const Success = () => {
               Authorization: `Bearer ${localStorage.getItem('token')}`
             }
           });
-          console.log('Purchase stored:', response.data);
         } catch (error) {
-          console.error('Error storing purchase:', error);
         }
       };
 

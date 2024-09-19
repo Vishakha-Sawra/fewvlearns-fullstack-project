@@ -7,11 +7,9 @@ const checkPurchasedCourses = async (userId, courseIds) => {
     const query = `SELECT course_id FROM purchased_courses WHERE user_id = ? AND course_id IN (${courseIds.map(() => '?').join(',')})`;
     const params = [userId, ...courseIds];
 
-    console.log("Executing query:", query);
-    console.log("With parameters:", params);
+   
 
     const [results] = await connection.query(query, params);
-    console.log("Purchased courses:", results); // Add logging here
     return results.map(result => result.course_id);
   } catch (err) {
     console.error("Error checking purchased courses:", err);
@@ -29,7 +27,6 @@ const storeItems = new Map([
 
 exports.createCheckoutSession = async (req, res) => {
   try {
-    console.log("User object:", req.user); // Add logging here
 
     const userId = req.user.id;
     if (!userId) {
@@ -41,7 +38,6 @@ exports.createCheckoutSession = async (req, res) => {
     // Check if any of the selected courses have already been purchased
     const purchasedCourseIds = await checkPurchasedCourses(userId, courseIds);
 
-    console.log("Purchased course IDs:", purchasedCourseIds); // Add logging here
 
     if (purchasedCourseIds.length > 0) {
       return res.status(400).json({

@@ -10,7 +10,6 @@ async function initializeConnection() {
     };
 
     const connection = await mysql.createConnection(connectionConfig);
-    console.log(`Connected to ${connectionConfig.database} database`);
 
     return connection;
   } catch (err) {

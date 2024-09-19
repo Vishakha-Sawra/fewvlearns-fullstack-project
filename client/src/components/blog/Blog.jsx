@@ -19,7 +19,6 @@ const Blog = () => {
         
         setAttributes(markdownModule.attributes || {});
       } catch (err) {
-        console.error('Error fetching the blog:', err);
       }
     };
 

@@ -20,7 +20,6 @@ const CoursePlayer = () => {
         setCourseDetails(response.data);
       } catch (error) {
         setError('Error fetching course details');
-        console.error('Error fetching course details:', error);
       }
     };
 
