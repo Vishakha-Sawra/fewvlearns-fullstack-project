@@ -58,7 +58,7 @@ const Courses = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/checkout/create-checkout-session",
+        "https://fewvlearns-kimy.onrender.com/checkout/create-checkout-session",
         {
           method: "POST",
           headers: {
@@ -75,7 +75,7 @@ const Courses = () => {
       } else if (response.status === 401) {
         // Token might be expired, try refreshing it
         const refreshResponse = await fetch(
-          "http://localhost:3000/auth/refresh",
+          "https://fewvlearns-kimy.onrender.com/auth/refresh",
           {
             method: "POST",
             headers: {
@@ -91,7 +91,7 @@ const Courses = () => {
 
           // Retry payment with new token
           const retryResponse = await fetch(
-            "http://localhost:3000/checkout/create-checkout-session",
+            "https://fewvlearns-kimy.onrender.com/checkout/create-checkout-session",
             {
               method: "POST",
               headers: {

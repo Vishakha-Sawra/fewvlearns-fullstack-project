@@ -11,7 +11,7 @@ const CoursePlayer = () => {
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/course-content/course-content/${courseId}`, {
+        const response = await axios.get(`https://fewvlearns-kimy.onrender.com/course-content/${courseId}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }

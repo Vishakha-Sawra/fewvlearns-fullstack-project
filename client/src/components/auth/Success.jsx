@@ -14,7 +14,7 @@ const Success = () => {
     if (sessionId && courseIds.length > 0) {
       const storePurchase = async () => {
         try {
-          const response = await axios.post('http://localhost:3000/store-purchase/store-purchase', {
+          const response = await axios.post('https://fewvlearns-kimy.onrender.com/store-purchase/store-purchase', {
             courseIds: courseIds
           }, {
             headers: {

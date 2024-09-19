@@ -18,7 +18,7 @@ const MyCourses = () => {
   async function refreshToken() {
     try {
       const response = await axios.post(
-        "http://localhost:3000/auth/refresh-token",
+        "https://fewvlearns-kimy.onrender.com/auth/refresh-token",
         {},
         {
           headers: {
@@ -39,7 +39,7 @@ const MyCourses = () => {
     try {
       let token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:3000/purchased/purchased-courses",
+        "https://fewvlearns-kimy.onrender.com/purchased/purchased-courses",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -53,7 +53,7 @@ const MyCourses = () => {
         try {
           token = await refreshToken();
           const response = await axios.get(
-            "http://localhost:3000/purchased/purchased-courses",
+            "https://fewvlearns-kimy.onrender.com/purchased/purchased-courses",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
